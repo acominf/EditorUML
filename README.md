@@ -23,7 +23,7 @@ Se puede guardar el diagrama, como un archivo modificable, para continuar con el
 
 4. Línea
 * Asigna el estilo a usar.
-* Asigane l tamaño de la línea.
+* Asigna el tamaño de la línea.
 * Une las clases u objetos.
 
 
