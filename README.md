@@ -1,42 +1,39 @@
 ### Objetivo del juego/aplicación
-El objetivo del juego/aplicación es ...
+El objetivo de la aplicación es crear una herramienta que apoye en la realización de diagramas de objetos y clases para las personas que esten interesadas en realizar este tipo de diagramas.
 
 ### Descripción del juego/aplicación
-La descripción del juego/aplicación es ...
+La aplicación tiene un espacio en donde se realizarán los diagramas, en ella se pueden colocar los recuadros que serán para representar una clase o un objeto, además de que se pueden agregar cuatro tipos de líneas de unión para crear una comunicación entre las clases u objetos.
+Se puede guardar el diagrama, como un archivo modificable, para continuar con el proceso y hacer modificaciones.
 
 ### Clases principales y sus características
-1. Clase 1
-* caracteristica1
-* caracteristica2
-* caracteristica3
+1. Mundo
+* Permite agregar diagramas.
+* Limita el tamaño del diagrama.
+* Elegir el tipo de diagrama.
 
-2. Clase 2
-* caracteristica1
-* caracteristica2
-* caracteristica3
+2. Diagrama
+* Asignar el nombre a la clase u objeto.
+* Asignar información (atributos).
+* Crear clases u objetos.
 
-3. Clase 3
-* caracteristica1
-* caracteristica2
-* caracteristica3
+3. Figura
+* Dibuja el espacio para la clase u objeto.
+* Dibuja la o las divisiones en el recuadro .
+* Permite agregar mas de una Figura.
 
-4. Clase 4
-* caracteristica1
-* caracteristica2
-* caracteristica3
+4. Línea
+* Asigna el estilo a usar.
+* Asigane l tamaño de la línea.
+* Une las clases u objetos.
 
-5. Clase 5
-* caracteristica1
-* caracteristica2
-* caracteristica3
 
 ### Diagrama de clases
-![Diagrama de clases](url-del-diagrama.png)
+![Diagrama de clases](https://github.com/acominf/EditorUML/blob/master/DigramaUML/Editor%20Diagramas%20Clases%20y%20Objetos.jpg)
 
 ### Autor(es)
 El autor(es) del proyecto son:
-- Nombre completo del autor 1 (@nombreUsuarioGitHub)
-- Nombre completo del autor 2 (@nombreUsuarioGitHub)
+- Iván Eduardo Martínez Cadena (@ivancadena98)
+- Diego Alejandro Ochoa González (@diegoochoa)
 
 ### Materia(s)
 - Programación Orientada a Objetos
