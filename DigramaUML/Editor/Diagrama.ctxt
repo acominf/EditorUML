@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Diagrama
+comment1.params=
+comment1.target=void\ act()
+comment1.text=public\ Diagrama(String\ n)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ this.nombre\=n;\r\n\ \ \ \ \ \ \ \ atributo\ \=\ new\ ArrayList\ <String>();\r\n\ \ \ \ }\r\n
+comment2.params=
+comment2.target=void\ agregaAtributo()
+numComments=3
