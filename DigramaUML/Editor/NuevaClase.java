@@ -14,11 +14,11 @@ public class NuevaClase extends BClass
     {
         funcionMouse();
         World mundo = this.getWorld(); 
-        MClase mc = new MClase();
+        //MClase mc = new MClase();
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if(Greenfoot.mouseClicked(this))
         {
-           //mc.cambiaBa(true);
+          // mc.cambiaBa(true);
            ((MClase)getWorld()).ba = true;
         }           
     }  

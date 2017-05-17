@@ -8,11 +8,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class NuevoObjeto extends BObj
 {
-    private MClase m;
+    private MObjeto m;
+    
     public void act() 
     {
         funcionMouse();
-    }    
+        World mundo = this.getWorld(); 
+        //MClase mc = new MClase();
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if(Greenfoot.mouseClicked(this))
+        {
+          // mc.cambiaBa(true);
+           ((MObjeto)getWorld()).b = true;
+        }           
+    }  
     
     public void funcionMouse()
     {

@@ -3,20 +3,21 @@ import javax.swing.JOptionPane;
 import java.lang.Object;
 import java.util.ArrayList;
 /**
- * Write a description of class Class here.
+ * Write a description of class Obj here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Class extends BClass
+public class Obj extends BObj 
 {
     private String nombre;
-    private ArrayList <String> atributo;
-    private ArrayList <String> metodo;
-    public Class()
+    private ArrayList <String> atributobj;
+    private ArrayList <String> metodobj;
+    
+    public Obj()
     {
-        metodo = new ArrayList<String>();
-        atributo = new ArrayList <String>();
+        metodobj = new ArrayList<String>();
+        atributobj = new ArrayList <String>();
     }
     
     public void act() 
@@ -33,8 +34,7 @@ public class Class extends BClass
                "Selector de opciones",
                JOptionPane.QUESTION_MESSAGE,
                null,
-               new Object[] {"Cambia nombre", "Agrega atributo", "Agrega metodo" , 
-                   "Muestra propiedades"},
+               new Object[] {"Cambia nombre", "Agrega atributo", "Muestra propiedades"},
                "Opcion");
                
                switch(seleccion)
@@ -43,29 +43,19 @@ public class Class extends BClass
                         break;
                    case "Agrega atributo" : agregaAtributo();
                         break;
-                   case "Agrega metodo" : agregaMetodo();
-                        break;
                    case "Muestra propiedades" : muestraPropiedades(); 
                         break;
                }
             }
        }
-    }   
+    }    
     
     @Override
      public void agregaAtributo()
     {
         String elemento;
         elemento=JOptionPane.showInputDialog("Atributo: ");
-        atributo.add(elemento);
-    }
-    
-    @Override
-    public void agregaMetodo()
-    {
-        String elemento;
-        elemento=JOptionPane.showInputDialog("Metodo: ");
-        metodo.add(elemento);
+        atributobj.add(elemento);
     }
     
     @Override
@@ -80,9 +70,7 @@ public class Class extends BClass
          String mensaje = "Nombre:\n" 
          + nombre + "\n" 
          + "Atributos:\n" 
-         + atributo.toString() + "\n"
-         + "Metodos:\n"
-         + metodo.toString() + "\n";
+         + atributobj.toString() + "\n";
          JOptionPane.showMessageDialog(null, mensaje,"Propiedades", JOptionPane.INFORMATION_MESSAGE);
               
     }

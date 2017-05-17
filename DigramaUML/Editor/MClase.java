@@ -11,7 +11,7 @@ public class MClase extends Seleccion
 {
 
     private ArrayList<Class> clases;
-    Graphics g;
+    //Graphics g;
     
     private EliminaClase ec;
     private NuevaClase bt;
@@ -22,7 +22,6 @@ public class MClase extends Seleccion
     public MClase()
     {  
         super.clean();
-        System.out.println("Se creo");
         
         ba=false;
         bab=false;
@@ -55,12 +54,9 @@ public class MClase extends Seleccion
                this.addObject(clase,mouse.getX(),mouse.getY());
                ba=false;
            }
-          else if(bab==true)
+          else if(bab==true && Greenfoot.mouseClicked(Class.class))
            {
-               /*
-               this.removeObject(mouse.getActor());*/
-              //this.removeObjects(clases);
-              // bab=false;
+               //removeObject(clase);
            }
         }
     }
@@ -73,7 +69,6 @@ public class MClase extends Seleccion
 }
     
   
-     /*if(Greenfoot.mouseClicked(Class.class))
-               {*/
+    
     
 

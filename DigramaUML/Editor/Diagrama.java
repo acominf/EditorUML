@@ -1,23 +1,34 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 public class Diagrama extends Actor
 {
-    private String nombre;
-    private ArrayList <String> atributo;
+    private ArrayList <String> atributobj;
+    private ArrayList <String> metodobj;
     
-    /*public Diagrama(String n)
-    {
-        this.nombre=n;
-        atributo = new ArrayList <String>();
+    public Diagrama()
+    {  
+        metodobj = new ArrayList<String>();
+        atributobj = new ArrayList <String>();
     }
-    */
+    
     public void act() 
-    {
-        
+    { 
     }    
     
     public void agregaAtributo()
+    {  
+    }
+    
+    public void agregaMetodo()
     {
-        atributo.add("Elemento");
+    }
+    
+    public void cambiaNombre()
+    {
+    }
+    
+    public void muestraPropiedades()
+    { 
     }
 }
