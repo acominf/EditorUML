@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.io.*;
 /**
  * Write a description of class MObjeto here.
  * 
@@ -8,40 +9,192 @@ import java.util.ArrayList;
  */
 public class MObjeto extends Seleccion
 {
-    private ArrayList<Obj> objetos;
-    public boolean b;
+    private static ArrayList<Obj> objetos;
+    private static ArrayList<Linea> lineas;
+    private static ArrayList<DepeObj> dependencias;
+    GreenfootImage g;
+    private  int a;
+    private  int b;
+    private  int t;
+    private  int p;
+    private GuardarO guard;
+    private AbrirO abr;
+    public boolean depe;
+    private DepeObj depeB;
+    
+    private Muestra2 m;
+    public boolean br;
     public MObjeto()
     {
         super.clean(); 
         
-        b=false;
-        objetos = new ArrayList<Obj>();
         
+        br=false;
+        objetos = new ArrayList<Obj>();
+        lineas =new ArrayList<Linea>();
+        dependencias = new ArrayList<DepeObj>();
         NuevoObjeto bt = new NuevoObjeto();
         BtAtras ba = new BtAtras();
+        guard = new GuardarO();
+        abr = new AbrirO();
+        m = new Muestra2();
+        depeB=new DepeObj();
         
         addObject(ba, super.getWidth()/2, super.getHeight()/8*7);
         addObject(bt,100,100);
+        addObject(guard,300,100);
+        addObject(abr,500,100);
+       addObject(depeB,750,100);
+       addObject(m,700,150);
+        showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
     }
+      
+    
     
     @Override
     public void act()
     {
-       MouseInfo mouse = Greenfoot.getMouseInfo();
+        GreenfootImage g= this.getBackground();
+        Color c= new Color (0,0,0);
+        g.setColor(c);
+       MouseInfo raton = Greenfoot.getMouseInfo();
        if(Greenfoot.mouseClicked(this))
        {
-           if(b==true)
+           if(br==true)
            {
                Obj objeto;
                objeto = new Obj();
+               objeto.x=raton.getX();
+               objeto.y=raton.getY();
                objetos.add(objeto);
-               this.addObject(objeto,mouse.getX(),mouse.getY());
-               b=false;
+               this.addObject(objeto,raton.getX(),raton.getY());
+               br=false;
+            }
+        }
+        if(depe)
+          {
+           if(Greenfoot.mousePressed(this)){
+            t=raton.getX();
+            p=raton.getY();
            }
-          else if(b==true && Greenfoot.mouseClicked(Class.class))
-           {
-               //removeObject(clase);
-           }
+           if(Greenfoot.mouseDragged(this)){
+                           
+                           
+                    }
+           if(Greenfoot.mouseDragEnded(this)){
+                            a=raton.getX();
+                            b=raton.getY();
+                            
+                            
+                            Linea linea= new Linea(t,p,a,b);
+                            g.drawLine(t,p,a,b);
+                            lineas.add(linea);
+                            
+                            DepeObj d = new DepeObj();
+                            d.x=raton.getX();
+                            d.y=raton.getY();
+                            dependencias.add(d);
+                            addObject(d,a,b);
+                            depe=false;
+                            System.out.println(dependencias);
+                            System.out.println(dependencias.size());
+                            //linea.dibujaLinea();
+                        }
+        }
+    }
+    
+    public void escribeArchivo(String nomArchivo)
+    {
+        File archivo = new File(nomArchivo);
+        
+        try{
+            FileOutputStream flujoSalida = new FileOutputStream(archivo);
+            ObjectOutputStream objetoSalida = new ObjectOutputStream(flujoSalida);
+            
+            objetoSalida.writeObject(objetos);
+            objetoSalida.writeObject(dependencias);
+            objetoSalida.writeObject(lineas);
+            System.out.println(lineas);
+            
+            objetoSalida.close();
+        }
+        catch(IOException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("Error al escribir el archivo");
+        }
+    }
+    
+    public void leeArchivo(String nomArchivo)
+    {
+            g=this.getBackground();
+            Color c= new Color (0,0,0);
+            g.setColor(c);
+            removeObjects(objetos);
+            removeObjects(lineas);
+            removeObjects(dependencias);
+            try{
+               FileInputStream flujoEntrada = new FileInputStream(nomArchivo);
+               ObjectInputStream objetoEntrada = new ObjectInputStream(flujoEntrada);
+                
+               ArrayList<Obj> aux = (ArrayList<Obj>)objetoEntrada.readObject();
+               ArrayList<DepeObj> auxp = (ArrayList<DepeObj>)objetoEntrada.readObject();
+               ArrayList<Linea> auxl = (ArrayList<Linea>)objetoEntrada.readObject();
+               for(int i = 0 ; i<aux.size();i++)
+               {
+                   Obj aux2 = aux.get(i);
+                   addObject(aux2,aux2.dameX(),aux2.dameY());
+                   showText(aux2.dameN(),aux2.getX(),aux2.getY()-25);
+               }
+      
+               for(int i = 0 ; i<auxp.size();i++)
+               {
+                   DepeObj aux2 = auxp.get(i);
+                   addObject(aux2,aux2.dameX(),aux2.dameY());
+               }
+               
+               for(int i = 0 ; i<auxl.size();i++)
+               {
+                   Linea aux2 = auxl.get(i);
+                   System.out.println(aux2.dameX1()+ "," +aux2.dameY1());
+                   g.drawLine(aux2.dameX1(),aux2.dameY1(),aux2.dameX2(),aux2.dameY2());
+               }
+               objetoEntrada.close();
+            }
+            
+            catch(IOException ex )
+            {
+                System.out.println(ex.getMessage());
+            }
+            catch (ClassNotFoundException ex) 
+            {
+                System.out.println(ex.getMessage());
+            } 
+        }
+    
+    public ArrayList regresaarr()
+    {
+        return objetos;
+    }
+    
+    public Obj regre(int n)
+    {
+        return objetos.get(n);
+    }
+    
+    public void muestraObjetos()
+    {
+        for(Obj c : objetos)
+        {
+            addObject(c,c.dameX(),c.dameY());
+            //g.drawString(aux2.dameN(),aux2.dameX()-35,aux2.dameY()-20);
+        }
+    }
+    
+    public void muestraLinea()
+    {
+        for(Linea l : lineas)
+        {
+            g.drawLine(l.dameX1(),l.dameY1(),l.dameX2(),l.dameY2());
         }
     }
 }

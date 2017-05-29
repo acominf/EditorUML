@@ -8,16 +8,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BClass extends Diagrama
 {
-   /* private GreenfootImage DC;
-    private GreenfootImage DCSM;*/
     private Seleccion s;
-   
+    private boolean bandera;
+    
+    public BClass()
+    {
+        bandera = false;
+    }
+    
     public void act() 
     {
         funcionMouse();
         if(Greenfoot.mouseClicked(this))
         {
-            System.out.println("Auch");
             Greenfoot.setWorld(new MClase());
         }
     } 
@@ -32,5 +35,19 @@ public class BClass extends Diagrama
         {
             this.setImage(new GreenfootImage("btCl.jpg"));
         }
+    }
+    
+    public void modificaBandera(boolean b)
+    {
+        this.bandera=b;
+    }
+    
+    public boolean accedeBandera()
+    {
+        return bandera;
+    }
+    
+    public void muestraNombre()
+    {
     }
 }

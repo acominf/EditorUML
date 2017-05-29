@@ -20,7 +20,7 @@ public class NuevaClase extends BClass
         {
           // mc.cambiaBa(true);
            ((MClase)getWorld()).ba = true;
-        }           
+        }
     }  
     
     public void funcionMouse()

@@ -29,5 +29,10 @@ public class BObj extends Diagrama
             this.setImage(new GreenfootImage("btOb.jpg"));
         }
     }
+    
+    public void muestraNombre()
+    {
+        
+    }
 }
  

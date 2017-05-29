@@ -2,29 +2,42 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import javax.swing.JOptionPane;
 import java.lang.Object;
 import java.util.ArrayList;
+import java.io.Serializable;
 /**
  * Write a description of class Class here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Class extends BClass
+public class Class extends BClass implements Serializable
 {
     private String nombre;
     private ArrayList <String> atributo;
     private ArrayList <String> metodo;
+    EliminaClase ec;
+    public int x,y;
     public Class()
     {
         metodo = new ArrayList<String>();
         atributo = new ArrayList <String>();
+        nombre = "";
     }
     
     public void act() 
     {
         MouseInfo mouse = Greenfoot.getMouseInfo();
+        World mundo = this.getWorld();
         if(Greenfoot.mouseClicked(this))
         {
-            if(mouse.getClickCount()==2)
+            boolean aux = super.accedeBandera();
+            System.out.println(aux);
+            if(super.accedeBandera()==true)
+            {
+                super.modificaBandera(false);
+                System.out.println("Entro");
+                mundo.removeObject(this);
+            }
+            else if(mouse.getClickCount()==2)
             {
                String seleccion;
                seleccion = (String)JOptionPane.showInputDialog(
@@ -40,6 +53,7 @@ public class Class extends BClass
                switch(seleccion)
                {
                    case "Cambia nombre" : cambiaNombre();
+                                          muestraNombre();
                         break;
                    case "Agrega atributo" : agregaAtributo();
                         break;
@@ -49,7 +63,13 @@ public class Class extends BClass
                         break;
                }
             }
+            else if(mouse.getButton()==3 )
+            {
+                mundo.removeObject(this);
+            }
+            
        }
+       //if(Greenfoot.mouseClicked(this)){}
     }   
     
     @Override
@@ -86,4 +106,34 @@ public class Class extends BClass
          JOptionPane.showMessageDialog(null, mensaje,"Propiedades", JOptionPane.INFORMATION_MESSAGE);
               
     }
+    
+    @Override
+    public void muestraNombre()
+    {
+        World mundo = this.getWorld();
+        /*GreenfootImage g = mundo.getBackground();
+        Color i = new Color (0,0,0);
+        g.setColor(i);
+        g.drawString(this.nombre,this.getX()-35,this.getY()-20);
+        System.out.println("Nombre");*/
+        mundo.showText(this.nombre,this.getX(),this.getY()-20);
+        
+    }
+    
+    
+    public int dameX()
+    {
+        return x;
+    }
+    
+    public int dameY()
+    {
+       return y;
+    }
+    
+    public String dameN()
+    {
+       return nombre;
+    }
+    
 }

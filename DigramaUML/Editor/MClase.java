@@ -1,74 +1,268 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.awt.Graphics;
-/**
- * Write a description of class MClase here.
- * 
- * @author (your name)  
- * @version (a version number or a date)
- */
-public class MClase extends Seleccion
-{
+import java.util.Scanner;
+import java.io.*;
+import java.util.Iterator;
 
-    private ArrayList<Class> clases;
-    //Graphics g;
+public class MClase extends Seleccion implements Serializable
+{
+    private  static ArrayList<Class> clases = new ArrayList<Class>();;
+    private  static ArrayList<Linea> lineas = new ArrayList<Linea>();
+    private  static ArrayList<Herencia> herencias= new ArrayList<Herencia>();
+    private  static ArrayList<Dependencia> dependencias = new ArrayList<Dependencia>();
+    private  int a;
+    private  int b;
+    private  int t;
+    private  int p;
     
-    private EliminaClase ec;
+    
+    GreenfootImage g;
+    
+    //private EliminaClase ec;
     private NuevaClase bt;
     private BtAtras bas;
-    
+    private Guardar guard;
+    public boolean here;
+    public boolean depe;
+    //public boolean hereA;
+    private Abrir abr;
+    private Herencia hereB;
+    private Dependencia depeB;
     public boolean ba;
-    public boolean bab;
+    private Muestra m;
+   // private HerenciaA ha;
     public MClase()
     {  
         super.clean();
-        
         ba=false;
-        bab=false;
-        
-        clases = new ArrayList<Class>();
-        
-        ec = new EliminaClase();
+      
         bt = new NuevaClase();
         bas = new BtAtras();
+        guard = new Guardar();
+        abr = new Abrir();
+        m = new Muestra();
+        hereB = new Herencia();
+        depeB = new Dependencia();
+       
         
-        addObject(ec,100,500);
+        //addObject(ec,100,500);
         addObject(bas, super.getWidth()/2, super.getHeight()/8*7);
         addObject(bt,100,100);
-        
-        
+        addObject(guard,300,100);
+        addObject(abr,500,100);
+        addObject(hereB,700,100);
+        addObject(depeB,750,100);
+        addObject(m,700,150);
+        showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
         
     }
     
     @Override
     public void act()
     {
+       g=this.getBackground();
+       Color c= new Color (0,0,0);
+       g.setColor(c);
+        MouseInfo raton=Greenfoot.getMouseInfo();
+        
+        
        MouseInfo mouse = Greenfoot.getMouseInfo();
+       GreenfootImage image = new GreenfootImage(800, 600);
        if(Greenfoot.mouseClicked(this))
        {
+            
            if(ba==true)
-           {
-               Class clase;
-               clase = new Class();
-               clases.add(clase);
+           {              
+               Class clase = new Class();
+               clase.x=mouse.getX();
+               clase.y=mouse.getY();
                this.addObject(clase,mouse.getX(),mouse.getY());
+               clases.add(clase);
+               System.out.println("Coordenada x: "+clase.dameX());
                ba=false;
+            }
+       
+        }
+        
+          if(here)
+          {
+             
+           if(Greenfoot.mousePressed(this)){
+            t=raton.getX();
+            p=raton.getY();
+            System.out.println(t +","+p);
            }
-          else if(bab==true && Greenfoot.mouseClicked(Class.class))
-           {
-               //removeObject(clase);
+           if(Greenfoot.mouseDragged(this)){
+                           
+                           
+                    }
+           if(Greenfoot.mouseDragEnded(this)){
+                            a=raton.getX();
+                            b=raton.getY();
+                            
+                            
+                            Linea linea= new Linea(t,p,a,b);
+                            g.drawLine(t,p,a,b);
+                            lineas.add(linea);
+                            
+                            Herencia h = new Herencia();
+                            h.x=mouse.getX();
+                            h.y=mouse.getY();
+                            herencias.add(h);
+                            addObject(h,a,b);
+                            here=false;
+                            
+                            System.out.println(herencias);
+                            System.out.println(herencias.size());
+                            //linea.dibujaLinea();
+                        }
+                        
+           
+        }
+        if(depe)
+          {
+           if(Greenfoot.mousePressed(this)){
+            t=raton.getX();
+            p=raton.getY();
            }
+           if(Greenfoot.mouseDragged(this)){
+                           
+                           
+                    }
+           if(Greenfoot.mouseDragEnded(this)){
+                            a=raton.getX();
+                            b=raton.getY();
+                            
+                            
+                            Linea linea= new Linea(t,p,a,b);
+                            g.drawLine(t,p,a,b);
+                            lineas.add(linea);
+                            
+                            Dependencia d = new Dependencia();
+                            d.x=mouse.getX();
+                            d.y=mouse.getY();
+                            dependencias.add(d);
+                            addObject(d,a,b);
+                            depe=false;
+                            System.out.println(dependencias);
+                            System.out.println(dependencias.size());
+                            //linea.dibujaLinea();
+                        }
+        }
+        
+        
+                      
+    }
+    
+    public void escribeArchivo(String nomArchivo)
+    {
+        File archivo = new File(nomArchivo);
+        
+        try{
+            FileOutputStream flujoSalida = new FileOutputStream(archivo);
+            ObjectOutputStream objetoSalida = new ObjectOutputStream(flujoSalida);
+            if(archivo != null)
+            {
+                archivo.delete();
+                objetoSalida.writeObject(clases);
+                objetoSalida.writeObject(herencias);
+                objetoSalida.writeObject(dependencias);
+                objetoSalida.writeObject(lineas);
+                System.out.println(lineas);
+            }
+            else
+            {
+                objetoSalida.writeObject(clases);
+                objetoSalida.writeObject(herencias);
+                objetoSalida.writeObject(dependencias);
+                objetoSalida.writeObject(lineas);
+                System.out.println(lineas);
+            }
+            
+            objetoSalida.close();
+        }
+        catch(IOException ex){
+            System.out.println(ex.getMessage());
+            System.out.println("Error al escribir el archivo");
         }
     }
     
-    public void cambiaBa(boolean b)
+    public void leeArchivo(String nomArchivo)
     {
-        ba=b;
+           //File archivo = new File(nomArchivo);
+            g=this.getBackground();
+            Color c= new Color (0,0,0);
+            g.setColor(c);
+            removeObjects(clases);
+            removeObjects(lineas);
+            removeObjects(herencias);
+            removeObjects(dependencias);
+            try{
+               FileInputStream flujoEntrada = new FileInputStream(nomArchivo);
+               ObjectInputStream objetoEntrada = new ObjectInputStream(flujoEntrada);
+               ArrayList<Class> aux = (ArrayList<Class>)objetoEntrada.readObject();
+               ArrayList<Herencia> auxh = (ArrayList<Herencia>)objetoEntrada.readObject();
+               ArrayList<Dependencia> auxp = (ArrayList<Dependencia>)objetoEntrada.readObject();
+               ArrayList<Linea> auxl = (ArrayList<Linea>)objetoEntrada.readObject();
+               for(int i = 0 ; i<aux.size();i++)
+               {
+                   Class aux2 = aux.get(i);
+                   clases.add(aux2);
+                   addObject(aux2,aux2.dameX(),aux2.dameY());
+                   showText(aux2.dameN(),aux2.getX(),aux2.getY()-20);
+                   
+               }       
+               
+               for(int i = 0 ; i<auxh.size();i++)
+               {
+                   Herencia aux2 = auxh.get(i);
+                   addObject(aux2,aux2.dameX(),aux2.dameY());
+               }
+               for(int i = 0 ; i<auxp.size();i++)
+               {
+                   Dependencia aux2 = auxp.get(i);
+                   addObject(aux2,aux2.dameX(),aux2.dameY());
+               }
+               for(int i = 0 ; i<auxl.size();i++)
+               {
+                   Linea aux2 = auxl.get(i);
+                   System.out.println(aux2.dameX1()+ "," +aux2.dameY1());
+                   g.drawLine(aux2.dameX1(),aux2.dameY1(),aux2.dameX2(),aux2.dameY2());
+               }
+               objetoEntrada.close();
+            }
+           
+            catch(IOException ex )
+            {
+                System.out.println(ex.getMessage());
+            }
+            catch (ClassNotFoundException ex) 
+            {
+                System.out.println(ex.getMessage());
+            } 
+            
+        }
+        
+    public ArrayList regresaarr()
+    {
+        return clases;
     }
     
+    public void muestraClases()
+    {
+        for(Class c : clases)
+        {
+            addObject(c,c.dameX(),c.dameY());
+            //g.drawString(aux2.dameN(),aux2.dameX()-35,aux2.dameY()-20);
+        }
+    }
+    
+    public void muestraLinea()
+    {
+        for(Linea l : lineas)
+        {
+            g.drawLine(l.dameX1(),l.dameY1(),l.dameX2(),l.dameY2());
+        }
+    }
 }
-    
-  
-    
-    
-

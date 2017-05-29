@@ -19,7 +19,7 @@ public class NuevoObjeto extends BObj
         if(Greenfoot.mouseClicked(this))
         {
           // mc.cambiaBa(true);
-           ((MObjeto)getWorld()).b = true;
+           ((MObjeto)getWorld()).br = true;
         }           
     }  
     

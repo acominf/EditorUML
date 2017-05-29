@@ -9,21 +9,20 @@ import java.util.ArrayList;
 public class EliminaClase extends BClass
 {
     private MClase m;
-    private ArrayList<Class> borra;
-    
     public EliminaClase()
     {
-        borra = new ArrayList<Class>();
+       
     }
     
     public void act() 
     {
         funcionMouse();
-        
         if(Greenfoot.mouseClicked(this))
         {
-            ((MClase)getWorld()).bab = true;
-        }           
+            System.out.println("Elimina");
+            super.modificaBandera(true);
+            System.out.println(super.accedeBandera());
+        }      
     }    
     
     public void funcionMouse()
@@ -38,9 +37,7 @@ public class EliminaClase extends BClass
         }
     }
     
-    public void remueveObjeto()
-    {
-       
-    }
+    
+    
 }
  

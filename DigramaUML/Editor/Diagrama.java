@@ -5,7 +5,6 @@ public class Diagrama extends Actor
 {
     private ArrayList <String> atributobj;
     private ArrayList <String> metodobj;
-    
     public Diagrama()
     {  
         metodobj = new ArrayList<String>();
@@ -31,4 +30,6 @@ public class Diagrama extends Actor
     public void muestraPropiedades()
     { 
     }
+    
+    
 }

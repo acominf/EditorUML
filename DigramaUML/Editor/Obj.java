@@ -2,18 +2,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import javax.swing.JOptionPane;
 import java.lang.Object;
 import java.util.ArrayList;
+import java.io.Serializable;
 /**
  * Write a description of class Obj here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Obj extends BObj 
+public class Obj extends BObj implements Serializable
 {
     private String nombre;
     private ArrayList <String> atributobj;
     private ArrayList <String> metodobj;
-    
+    public int x,y;
     public Obj()
     {
         metodobj = new ArrayList<String>();
@@ -23,6 +24,7 @@ public class Obj extends BObj
     public void act() 
     {
         MouseInfo mouse = Greenfoot.getMouseInfo();
+        World mundo = this.getWorld();
         if(Greenfoot.mouseClicked(this))
         {
             if(mouse.getClickCount()==2)
@@ -40,12 +42,17 @@ public class Obj extends BObj
                switch(seleccion)
                {
                    case "Cambia nombre" : cambiaNombre();
+                                          muestraNombre();
                         break;
                    case "Agrega atributo" : agregaAtributo();
                         break;
                    case "Muestra propiedades" : muestraPropiedades(); 
                         break;
                }
+            }
+            else if(mouse.getButton()==3 )
+            {
+                mundo.removeObject(this);
             }
        }
     }    
@@ -61,7 +68,7 @@ public class Obj extends BObj
     @Override
     public void cambiaNombre()
     {
-        nombre=JOptionPane.showInputDialog("Nombre de la clase: ");
+        nombre=JOptionPane.showInputDialog("Nombre del objeto: ");
     }
     
     @Override
@@ -74,4 +81,28 @@ public class Obj extends BObj
          JOptionPane.showMessageDialog(null, mensaje,"Propiedades", JOptionPane.INFORMATION_MESSAGE);
               
     }
+    
+    @Override
+    public void muestraNombre()
+    {
+        World mundo = this.getWorld();
+        mundo.showText(this.nombre,this.getX(),this.getY()-25);
+        
+    }
+    
+     public int dameX()
+    {
+        return x;
+    }
+    
+    public int dameY()
+    {
+       return y;
+    }
+    
+    public String dameN()
+    {
+       return nombre;
+    }
+    
 }

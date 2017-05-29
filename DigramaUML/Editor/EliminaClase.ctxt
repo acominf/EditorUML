@@ -7,6 +7,4 @@ comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ funcionMouse()
-comment4.params=
-comment4.target=void\ remueveObjeto()
-numComments=5
+numComments=4

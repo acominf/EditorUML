@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Linea
+comment1.params=x1\ y1\ x2\ y2
+comment1.target=Linea(int,\ int,\ int,\ int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=int\ dameX1()
+comment4.params=
+comment4.target=int\ dameY1()
+comment5.params=
+comment5.target=int\ dameX2()
+comment6.params=
+comment6.target=int\ dameY2()
+numComments=7

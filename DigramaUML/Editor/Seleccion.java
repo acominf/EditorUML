@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Seleccion extends World
 {
-
+    
     public boolean mousePresionado;
     public BClass boton1 = new BClass();
     public BObj boton2 = new BObj();
