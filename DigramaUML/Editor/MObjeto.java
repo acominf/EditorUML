@@ -23,7 +23,7 @@ public class MObjeto extends Seleccion
     public boolean limpia;
     private DepeObj depeB;
     
-    private Muestra2 m;
+    
     public boolean br;
     public MObjeto()
     {
@@ -38,7 +38,7 @@ public class MObjeto extends Seleccion
         BtAtrasO ba = new BtAtrasO();
         guard = new GuardarO();
         abr = new AbrirO();
-        m = new Muestra2();
+        
         depeB=new DepeObj();
         
         
@@ -47,7 +47,7 @@ public class MObjeto extends Seleccion
         addObject(guard,300,100);
         addObject(abr,500,100);
        addObject(depeB,750,100);
-       //addObject(m,700,150);
+       
         showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
     }
       

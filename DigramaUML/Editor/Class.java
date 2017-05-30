@@ -14,13 +14,17 @@ public class Class extends BClass implements Serializable
     private String nombre;
     private ArrayList <String> atributo;
     private ArrayList <String> metodo;
-    EliminaClase ec;
+   
     public int x,y;
+    private int num;
+    
+    MClase mc =(MClase)getWorld();
     public Class()
     {
         metodo = new ArrayList<String>();
         atributo = new ArrayList <String>();
         nombre = "";
+        //num=mc.accedeN();
     }
     
     public void act() 
@@ -66,10 +70,10 @@ public class Class extends BClass implements Serializable
             else if(mouse.getButton()==3 )
             {
                 mundo.removeObject(this);
+               // mc.modificaClases(num);
             }
             
        }
-       //if(Greenfoot.mouseClicked(this)){}
     }   
     
     @Override

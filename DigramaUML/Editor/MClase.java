@@ -15,7 +15,8 @@ public class MClase extends Seleccion implements Serializable
     private  int b;
     private  int t;
     private  int p;
-    
+    private static int numC;
+    private static int numO;
     
     GreenfootImage g;
     
@@ -32,7 +33,6 @@ public class MClase extends Seleccion implements Serializable
     private Dependencia depeB;
     public boolean ba;
     public boolean limpia;
-    private Muestra m;
     //private Limpia lim;
    // private HerenciaA ha;
     public MClase()
@@ -44,7 +44,6 @@ public class MClase extends Seleccion implements Serializable
         bas = new BtAtras();
         guard = new Guardar();
         abr = new Abrir();
-        m = new Muestra();
         hereB = new Herencia();
         depeB = new Dependencia();
         //lim = new Limpia();
@@ -65,7 +64,8 @@ public class MClase extends Seleccion implements Serializable
         //addObject(m,700,150);
         //addObject(lim,700,200);
         showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
-        
+        numC=0;
+        numO=0;
         
     }
     
@@ -85,12 +85,13 @@ public class MClase extends Seleccion implements Serializable
             
            if(ba==true)
            {              
-               Class clase = new Class();
+               Class clase = new Class(); 
                clase.x=mouse.getX();
                clase.y=mouse.getY();
                this.addObject(clase,mouse.getX(),mouse.getY());
                clases.add(clase);
                System.out.println("Coordenada x: "+clase.dameX());
+               numC++;
                ba=false;
             }
        
@@ -292,5 +293,20 @@ public class MClase extends Seleccion implements Serializable
         lineas.clear();
         herencias.clear();
         dependencias.clear();
+    }
+    
+    public void modificaClases(int n)
+    {
+        clases.remove(n);
+    }
+    
+    public void aumentaN()
+    {
+        numC++;
+    }
+    
+    public int accedeN()
+    {
+        return numC;
     }
 }

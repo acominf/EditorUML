@@ -11,6 +11,8 @@ public class Diagrama extends Actor
         atributobj = new ArrayList <String>();
     }
     
+    
+    
     public void act() 
     { 
     }    

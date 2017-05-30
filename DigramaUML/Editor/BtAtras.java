@@ -14,7 +14,7 @@ public class BtAtras extends Actor
      * 
       */
      
-        MClase mc = (MClase) getWorld();
+    MClase mc = (MClase) getWorld();
     public void act() 
     {
         World mundo = this.getWorld(); 

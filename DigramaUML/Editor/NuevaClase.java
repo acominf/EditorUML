@@ -6,10 +6,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class NuevaClase extends BClass
+public class NuevaClase extends BClass 
 {
     private MClase m;
-    
+    MClase mc =(MClase)getWorld();
     public void act() 
     {
         funcionMouse();
@@ -20,6 +20,7 @@ public class NuevaClase extends BClass
         {
           // mc.cambiaBa(true);
            ((MClase)getWorld()).ba = true;
+           // mc.aumentaN();
         }
     }  
     
