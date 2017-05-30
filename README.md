@@ -29,7 +29,7 @@ Se puede guardar el diagrama, como un archivo modificable, para continuar con el
 ### Diagrama de clases
 ![Diagrama de clases](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/UML.jpg)
 
-### Actores de la apliación
+### Actores de la aplicación
 ![Imagen de clase](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/Editor/images/dibujoclass.jpg)
 ![Imagen de objeto](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/Editor/images/dibujoobj.jpg)
 ![Imagen de herencia](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/Editor/images/a.jpg)
