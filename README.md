@@ -34,7 +34,7 @@ Se puede guardar el diagrama, como un archivo modificable, para continuar con el
 ![Imagen de objeto](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/Editor/images/dibujoobj.jpg)
 ![Imagen de herencia](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/Editor/images/a.jpg)
 ![Imagen de relacion](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/Editor/images/a2.jpg)
-![Imagen de relacion](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/Editor/images/a2.jpg)
+
 
 ### Autor(es)
 El autor(es) del proyecto son:
