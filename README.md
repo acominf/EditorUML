@@ -28,7 +28,7 @@ Se puede guardar el diagrama, como un archivo modificable, para continuar con el
 
 
 ### Diagrama de clases
-![Diagrama de clases](https://github.com/acominf/EditorUML/blob/master/DigramaUML/Editor%20Diagramas%20Clases%20y%20Objetos.jpg)
+![Diagrama de clases](https://github.com/acominf/EditorUML/blob/master/DigramaUML/UML.jpg)
 
 ### Autor(es)
 El autor(es) del proyecto son:
