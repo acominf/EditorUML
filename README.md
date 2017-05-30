@@ -22,7 +22,6 @@ Se puede guardar el diagrama, como un archivo modificable, para continuar con el
 * Permite agregar mas de una Figura.
 
 4. Línea
-* Asigna el estilo a usar.
 * Asigna el tamaño de la línea.
 * Une las clases u objetos.
 
