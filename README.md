@@ -31,9 +31,13 @@ Se puede guardar el diagrama, como un archivo modificable, para continuar con el
 
 ### Actores de la aplicación
 ![Imagen de clase](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/Editor/images/dibujoclass.jpg)
+La imagen de clase permite crear una clase y modificar su nombre, atributos y métodos.
 ![Imagen de objeto](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/Editor/images/dibujoobj.jpg)
+La imagen de objeto permite crear un objeto y modificar su nombre y atributos.
 ![Imagen de herencia](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/Editor/images/a.jpg)
+La imagen de herencia permite relacionar dos clases por medio de la herencia.
 ![Imagen de relacion](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/Editor/images/a2.jpg)
+La imagen relacion permite relacionar dos clases u objetos dentro de nuestro diagrama.
 
 
 ### Autor(es)
