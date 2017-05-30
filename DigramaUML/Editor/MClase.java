@@ -7,10 +7,10 @@ import java.util.Iterator;
 
 public class MClase extends Seleccion implements Serializable
 {
-    private  static ArrayList<Class> clases = new ArrayList<Class>();;
-    private  static ArrayList<Linea> lineas = new ArrayList<Linea>();
-    private  static ArrayList<Herencia> herencias= new ArrayList<Herencia>();
-    private  static ArrayList<Dependencia> dependencias = new ArrayList<Dependencia>();
+    private  static ArrayList<Class> clases;
+    private   ArrayList<Linea> lineas;
+    private  static ArrayList<Herencia> herencias;
+    private  static ArrayList<Dependencia> dependencias;
     private  int a;
     private  int b;
     private  int t;
@@ -18,6 +18,7 @@ public class MClase extends Seleccion implements Serializable
     
     
     GreenfootImage g;
+    
     
     //private EliminaClase ec;
     private NuevaClase bt;
@@ -30,13 +31,15 @@ public class MClase extends Seleccion implements Serializable
     private Herencia hereB;
     private Dependencia depeB;
     public boolean ba;
+    public boolean limpia;
     private Muestra m;
+    private Limpia lim;
    // private HerenciaA ha;
     public MClase()
     {  
         super.clean();
         ba=false;
-      
+        //clases = new ArrayList<Class>();
         bt = new NuevaClase();
         bas = new BtAtras();
         guard = new Guardar();
@@ -44,7 +47,13 @@ public class MClase extends Seleccion implements Serializable
         m = new Muestra();
         hereB = new Herencia();
         depeB = new Dependencia();
-       
+        lim = new Limpia();
+        
+        
+        clases= new ArrayList<Class>();
+        lineas= new ArrayList<Linea>();
+         herencias= new ArrayList<Herencia>();
+         dependencias = new ArrayList<Dependencia>();
         
         //addObject(ec,100,500);
         addObject(bas, super.getWidth()/2, super.getHeight()/8*7);
@@ -54,7 +63,9 @@ public class MClase extends Seleccion implements Serializable
         addObject(hereB,700,100);
         addObject(depeB,750,100);
         addObject(m,700,150);
+        addObject(lim,700,200);
         showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
+        
         
     }
     
@@ -117,8 +128,6 @@ public class MClase extends Seleccion implements Serializable
                             System.out.println(herencias.size());
                             //linea.dibujaLinea();
                         }
-                        
-           
         }
         if(depe)
           {
@@ -150,9 +159,12 @@ public class MClase extends Seleccion implements Serializable
                             //linea.dibujaLinea();
                         }
         }
-        
-        
-                      
+        else if(limpia == true)
+        {
+            System.out.println("Limpia es igual a "+limpia);
+             borraListas();
+             limpia=false;
+        } 
     }
     
     public void escribeArchivo(String nomArchivo)
@@ -162,7 +174,7 @@ public class MClase extends Seleccion implements Serializable
         try{
             FileOutputStream flujoSalida = new FileOutputStream(archivo);
             ObjectOutputStream objetoSalida = new ObjectOutputStream(flujoSalida);
-            if(archivo != null)
+            /*if(archivo != null)
             {
                 archivo.delete();
                 objetoSalida.writeObject(clases);
@@ -171,14 +183,14 @@ public class MClase extends Seleccion implements Serializable
                 objetoSalida.writeObject(lineas);
                 System.out.println(lineas);
             }
-            else
-            {
+            else*/
+            
                 objetoSalida.writeObject(clases);
                 objetoSalida.writeObject(herencias);
                 objetoSalida.writeObject(dependencias);
                 objetoSalida.writeObject(lineas);
                 System.out.println(lineas);
-            }
+            
             
             objetoSalida.close();
         }
@@ -198,13 +210,17 @@ public class MClase extends Seleccion implements Serializable
             removeObjects(lineas);
             removeObjects(herencias);
             removeObjects(dependencias);
+            
             try{
                FileInputStream flujoEntrada = new FileInputStream(nomArchivo);
                ObjectInputStream objetoEntrada = new ObjectInputStream(flujoEntrada);
                ArrayList<Class> aux = (ArrayList<Class>)objetoEntrada.readObject();
-               ArrayList<Herencia> auxh = (ArrayList<Herencia>)objetoEntrada.readObject();
-               ArrayList<Dependencia> auxp = (ArrayList<Dependencia>)objetoEntrada.readObject();
-               ArrayList<Linea> auxl = (ArrayList<Linea>)objetoEntrada.readObject();
+               //ArrayList<Herencia> auxh
+               herencias= (ArrayList<Herencia>)objetoEntrada.readObject();
+               //ArrayList<Dependencia> auxp 
+               dependencias= (ArrayList<Dependencia>)objetoEntrada.readObject();
+               //ArrayList<Linea> auxl 
+               lineas = (ArrayList<Linea>)objetoEntrada.readObject();
                for(int i = 0 ; i<aux.size();i++)
                {
                    Class aux2 = aux.get(i);
@@ -213,23 +229,25 @@ public class MClase extends Seleccion implements Serializable
                    showText(aux2.dameN(),aux2.getX(),aux2.getY()-20);
                    
                }       
+               for(int i = 0 ; i<herencias.size();i++)
+               {
+                   Herencia aux3 = herencias.get(i);
+                   addObject(aux3,aux3.dameX(),aux3.dameY());
+               }
+               for(int i = 0 ; i<dependencias.size();i++)
+               {
+                   Dependencia aux4 = dependencias.get(i);
+                   addObject(aux4,aux4.dameX(),aux4.dameY());
+               }
                
-               for(int i = 0 ; i<auxh.size();i++)
+               for(int i = 0 ; i<lineas.size();i++)
                {
-                   Herencia aux2 = auxh.get(i);
-                   addObject(aux2,aux2.dameX(),aux2.dameY());
+                   Linea aux5 = lineas.get(i);
+                   System.out.println(aux5.dameX1()+ "," +aux5.dameY1());
+                   g.drawLine(aux5.dameX1(),aux5.dameY1(),aux5.dameX2(),aux5.dameY2());
+                   muestraLinea();
                }
-               for(int i = 0 ; i<auxp.size();i++)
-               {
-                   Dependencia aux2 = auxp.get(i);
-                   addObject(aux2,aux2.dameX(),aux2.dameY());
-               }
-               for(int i = 0 ; i<auxl.size();i++)
-               {
-                   Linea aux2 = auxl.get(i);
-                   System.out.println(aux2.dameX1()+ "," +aux2.dameY1());
-                   g.drawLine(aux2.dameX1(),aux2.dameY1(),aux2.dameX2(),aux2.dameY2());
-               }
+               
                objetoEntrada.close();
             }
            
@@ -242,11 +260,13 @@ public class MClase extends Seleccion implements Serializable
                 System.out.println(ex.getMessage());
             } 
             
+            
         }
+        
         
     public ArrayList regresaarr()
     {
-        return clases;
+        return lineas;
     }
     
     public void muestraClases()
@@ -264,5 +284,13 @@ public class MClase extends Seleccion implements Serializable
         {
             g.drawLine(l.dameX1(),l.dameY1(),l.dameX2(),l.dameY2());
         }
+    } 
+    
+    public void borraListas()
+    {
+        clases.clear();
+        lineas.clear();
+        herencias.clear();
+        dependencias.clear();
     }
 }

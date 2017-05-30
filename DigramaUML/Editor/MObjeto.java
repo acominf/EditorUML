@@ -20,6 +20,7 @@ public class MObjeto extends Seleccion
     private GuardarO guard;
     private AbrirO abr;
     public boolean depe;
+    public boolean limpia;
     private DepeObj depeB;
     
     private Muestra2 m;
@@ -28,17 +29,18 @@ public class MObjeto extends Seleccion
     {
         super.clean(); 
         
-        
         br=false;
         objetos = new ArrayList<Obj>();
         lineas =new ArrayList<Linea>();
         dependencias = new ArrayList<DepeObj>();
+        
         NuevoObjeto bt = new NuevoObjeto();
-        BtAtras ba = new BtAtras();
+        BtAtrasO ba = new BtAtrasO();
         guard = new GuardarO();
         abr = new AbrirO();
         m = new Muestra2();
         depeB=new DepeObj();
+        
         
         addObject(ba, super.getWidth()/2, super.getHeight()/8*7);
         addObject(bt,100,100);
@@ -49,6 +51,7 @@ public class MObjeto extends Seleccion
         showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
     }
       
+    
     
     
     @Override
@@ -101,6 +104,12 @@ public class MObjeto extends Seleccion
                             //linea.dibujaLinea();
                         }
         }
+        else if(limpia == true)
+        {
+            System.out.println("Limpia es igual a "+limpia);
+             borraListas();
+             limpia=false;
+        } 
     }
     
     public void escribeArchivo(String nomArchivo)
@@ -122,6 +131,7 @@ public class MObjeto extends Seleccion
             System.out.println(ex.getMessage());
             System.out.println("Error al escribir el archivo");
         }
+        
     }
     
     public void leeArchivo(String nomArchivo)
@@ -196,5 +206,12 @@ public class MObjeto extends Seleccion
         {
             g.drawLine(l.dameX1(),l.dameY1(),l.dameX2(),l.dameY2());
         }
+    }
+    
+     public void borraListas()
+    {
+        objetos.clear();
+        lineas.clear();
+        dependencias.clear();
     }
 }

@@ -87,7 +87,7 @@ public class Class extends BClass implements Serializable
         elemento=JOptionPane.showInputDialog("Metodo: ");
         metodo.add(elemento);
     }
-    
+     
     @Override
     public void cambiaNombre()
     {
