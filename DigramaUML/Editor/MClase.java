@@ -33,7 +33,7 @@ public class MClase extends Seleccion implements Serializable
     public boolean ba;
     public boolean limpia;
     private Muestra m;
-    private Limpia lim;
+    //private Limpia lim;
    // private HerenciaA ha;
     public MClase()
     {  
@@ -47,7 +47,7 @@ public class MClase extends Seleccion implements Serializable
         m = new Muestra();
         hereB = new Herencia();
         depeB = new Dependencia();
-        lim = new Limpia();
+        //lim = new Limpia();
         
         
         clases= new ArrayList<Class>();
@@ -62,8 +62,8 @@ public class MClase extends Seleccion implements Serializable
         addObject(abr,500,100);
         addObject(hereB,700,100);
         addObject(depeB,750,100);
-        addObject(m,700,150);
-        addObject(lim,700,200);
+        //addObject(m,700,150);
+        //addObject(lim,700,200);
         showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
         
         

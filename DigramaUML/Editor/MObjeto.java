@@ -47,7 +47,7 @@ public class MObjeto extends Seleccion
         addObject(guard,300,100);
         addObject(abr,500,100);
        addObject(depeB,750,100);
-       addObject(m,700,150);
+       //addObject(m,700,150);
         showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
     }
       
