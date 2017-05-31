@@ -22,9 +22,8 @@ public class MObjeto extends Seleccion
     public boolean depe;
     public boolean limpia;
     private DepeObj depeB;
-    
-    
     public boolean br;
+    private static int num=0;
     public MObjeto()
     {
         super.clean(); 
@@ -65,15 +64,22 @@ public class MObjeto extends Seleccion
        {
            if(br==true)
            {
+               if(objetos.isEmpty()){
+                   num=0;
+               }
                Obj objeto;
                objeto = new Obj();
                objeto.x=raton.getX();
                objeto.y=raton.getY();
                objetos.add(objeto);
                this.addObject(objeto,raton.getX(),raton.getY());
+               objeto.asignaN(num);
+               System.out.println(num);
+               num++;
                br=false;
             }
         }
+        
         if(depe)
           {
            if(Greenfoot.mousePressed(this)){

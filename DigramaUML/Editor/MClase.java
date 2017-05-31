@@ -15,59 +15,46 @@ public class MClase extends Seleccion implements Serializable
     private  int b;
     private  int t;
     private  int p;
-    private static int numC;
-    private static int numO;
-    
     GreenfootImage g;
-    
-    
-    //private EliminaClase ec;
     private NuevaClase bt;
     private BtAtras bas;
     private Guardar guard;
     public boolean here;
     public boolean depe;
-    //public boolean hereA;
     private Abrir abr;
     private Herencia hereB;
     private Dependencia depeB;
     public boolean ba;
     public boolean limpia;
-    //private Limpia lim;
-   // private HerenciaA ha;
+    
+    
+    private static int num=0;
     public MClase()
     {  
         super.clean();
         ba=false;
-        //clases = new ArrayList<Class>();
         bt = new NuevaClase();
         bas = new BtAtras();
         guard = new Guardar();
         abr = new Abrir();
         hereB = new Herencia();
         depeB = new Dependencia();
-        //lim = new Limpia();
-        
-        
         clases= new ArrayList<Class>();
         lineas= new ArrayList<Linea>();
-         herencias= new ArrayList<Herencia>();
-         dependencias = new ArrayList<Dependencia>();
+        herencias= new ArrayList<Herencia>();
+        dependencias = new ArrayList<Dependencia>();
         
-        //addObject(ec,100,500);
         addObject(bas, super.getWidth()/2, super.getHeight()/8*7);
         addObject(bt,100,100);
         addObject(guard,300,100);
         addObject(abr,500,100);
         addObject(hereB,700,100);
         addObject(depeB,750,100);
-        //addObject(m,700,150);
-        //addObject(lim,700,200);
-        showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
-        numC=0;
-        numO=0;
         
+        
+        showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
     }
+    
     
     @Override
     public void act()
@@ -84,17 +71,24 @@ public class MClase extends Seleccion implements Serializable
        {
             
            if(ba==true)
-           {              
+           {      
+               if(clases.isEmpty()){
+                   num=0;
+               }
                Class clase = new Class(); 
                clase.x=mouse.getX();
                clase.y=mouse.getY();
                this.addObject(clase,mouse.getX(),mouse.getY());
                clases.add(clase);
                System.out.println("Coordenada x: "+clase.dameX());
-               numC++;
+               clase.asignaN(num);
+               System.out.println(num);
+               num++;
+               
                ba=false;
             }
        
+            
         }
         
           if(here)
@@ -175,23 +169,12 @@ public class MClase extends Seleccion implements Serializable
         try{
             FileOutputStream flujoSalida = new FileOutputStream(archivo);
             ObjectOutputStream objetoSalida = new ObjectOutputStream(flujoSalida);
-            /*if(archivo != null)
-            {
-                archivo.delete();
-                objetoSalida.writeObject(clases);
-                objetoSalida.writeObject(herencias);
-                objetoSalida.writeObject(dependencias);
-                objetoSalida.writeObject(lineas);
-                System.out.println(lineas);
-            }
-            else*/
             
-                objetoSalida.writeObject(clases);
-                objetoSalida.writeObject(herencias);
-                objetoSalida.writeObject(dependencias);
-                objetoSalida.writeObject(lineas);
-                System.out.println(lineas);
-            
+            objetoSalida.writeObject(clases);
+            objetoSalida.writeObject(herencias);
+            objetoSalida.writeObject(dependencias);
+            objetoSalida.writeObject(lineas);
+            System.out.println(lineas);
             
             objetoSalida.close();
         }
@@ -211,16 +194,12 @@ public class MClase extends Seleccion implements Serializable
             removeObjects(lineas);
             removeObjects(herencias);
             removeObjects(dependencias);
-            
             try{
                FileInputStream flujoEntrada = new FileInputStream(nomArchivo);
                ObjectInputStream objetoEntrada = new ObjectInputStream(flujoEntrada);
                ArrayList<Class> aux = (ArrayList<Class>)objetoEntrada.readObject();
-               //ArrayList<Herencia> auxh
                herencias= (ArrayList<Herencia>)objetoEntrada.readObject();
-               //ArrayList<Dependencia> auxp 
                dependencias= (ArrayList<Dependencia>)objetoEntrada.readObject();
-               //ArrayList<Linea> auxl 
                lineas = (ArrayList<Linea>)objetoEntrada.readObject();
                for(int i = 0 ; i<aux.size();i++)
                {
@@ -262,12 +241,11 @@ public class MClase extends Seleccion implements Serializable
             } 
             
             
-        }
-        
-        
+    }
+
     public ArrayList regresaarr()
     {
-        return lineas;
+        return clases;
     }
     
     public void muestraClases()
@@ -275,7 +253,6 @@ public class MClase extends Seleccion implements Serializable
         for(Class c : clases)
         {
             addObject(c,c.dameX(),c.dameY());
-            //g.drawString(aux2.dameN(),aux2.dameX()-35,aux2.dameY()-20);
         }
     }
     
@@ -299,7 +276,7 @@ public class MClase extends Seleccion implements Serializable
     {
         clases.remove(n);
     }
-    
+    /*
     public void aumentaN()
     {
         numC++;
@@ -308,5 +285,5 @@ public class MClase extends Seleccion implements Serializable
     public int accedeN()
     {
         return numC;
-    }
+    }*/
 }

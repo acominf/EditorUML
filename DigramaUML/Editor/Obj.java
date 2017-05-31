@@ -15,6 +15,7 @@ public class Obj extends BObj implements Serializable
     private ArrayList <String> atributobj;
     private ArrayList <String> metodobj;
     public int x,y;
+    private int num;
     public Obj()
     {
         metodobj = new ArrayList<String>();
@@ -52,6 +53,10 @@ public class Obj extends BObj implements Serializable
             }
             else if(mouse.getButton()==3 )
             {
+                MObjeto mc =(MObjeto)getWorld();
+                ArrayList<Obj> lista;
+                lista=mc.regresaarr();
+                lista.remove(this.num);  
                 mundo.removeObject(this);
             }
        }
@@ -88,6 +93,11 @@ public class Obj extends BObj implements Serializable
         World mundo = this.getWorld();
         mundo.showText(this.nombre,this.getX(),this.getY()-25);
         
+    }
+    
+    public void asignaN(int n)
+    {
+        this.num=n;   
     }
     
      public int dameX()

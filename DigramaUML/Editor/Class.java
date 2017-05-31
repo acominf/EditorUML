@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import javax.swing.JOptionPane;
+import javax.swing.JOptionPane; 
 import java.lang.Object;
 import java.util.ArrayList;
 import java.io.Serializable;
@@ -18,13 +18,12 @@ public class Class extends BClass implements Serializable
     public int x,y;
     private int num;
     
-    MClase mc =(MClase)getWorld();
+    
     public Class()
     {
-        metodo = new ArrayList<String>();
-        atributo = new ArrayList <String>();
-        nombre = "";
-        //num=mc.accedeN();
+       metodo = new ArrayList<String>();
+       atributo = new ArrayList <String>();
+       nombre = "";
     }
     
     public void act() 
@@ -68,13 +67,17 @@ public class Class extends BClass implements Serializable
                }
             }
             else if(mouse.getButton()==3 )
-            {
+            {   
+                MClase mc =(MClase)getWorld();
+                ArrayList<Class> lista;
+                lista=mc.regresaarr();
+                lista.remove(this.num);  
                 mundo.removeObject(this);
-               // mc.modificaClases(num);
             }
-            
        }
     }   
+    
+     
     
     @Override
      public void agregaAtributo()
@@ -123,7 +126,10 @@ public class Class extends BClass implements Serializable
         mundo.showText(this.nombre,this.getX(),this.getY()-20);
         
     }
-    
+    public void asignaN(int n)
+    {
+        this.num=n;   
+    }
     
     public int dameX()
     {

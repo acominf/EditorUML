@@ -20,9 +20,7 @@ public class BtAtras extends Actor
         World mundo = this.getWorld(); 
         if(Greenfoot.mouseClicked(this))
         {
-           ((MClase)getWorld()).limpia = true;
             Greenfoot.setWorld(new Principal());
-           //((MClase)getWorld()).limpia = true;
         }
-    }    
+    }     
 }
