@@ -51,6 +51,9 @@ El autor(es) del proyecto son:
 ### Semestre
 - 2016-2017/II
 
+###Video de muestra del proyecto
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9QeMDz1amiU" frameborder="0" allowfullscreen></iframe>
+
 ### Markdown
 El contenido de esta página está escrito en un lenguaje de marcado sencillo llamado *Markdown*. Para más detalles consulta la página de [Markdown para GitHub](https://guides.github.com/features/mastering-markdown/).
 
