@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 import java.util.Scanner;
 import java.io.*;
-import java.util.Iterator;
 
 public class MClase extends Seleccion implements Serializable
 {
@@ -87,8 +86,6 @@ public class MClase extends Seleccion implements Serializable
                
                ba=false;
             }
-       
-            
         }
         
           if(here)
@@ -276,6 +273,12 @@ public class MClase extends Seleccion implements Serializable
     {
         clases.remove(n);
     }
+    
+    public void modificaNum()
+    {
+        num--;
+    }
+    
     /*
     public void aumentaN()
     {

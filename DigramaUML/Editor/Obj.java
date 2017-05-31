@@ -57,6 +57,16 @@ public class Obj extends BObj implements Serializable
                 ArrayList<Obj> lista;
                 lista=mc.regresaarr();
                 lista.remove(this.num);  
+                if(this.num < lista.size())
+                {
+                    for(int i=0; i<lista.size();i++)
+                    {
+                        Obj auxc;
+                        auxc=lista.get(i);
+                        auxc.asignaN(i);
+                    }
+                }
+                mc.modificaNum();
                 mundo.removeObject(this);
             }
        }
@@ -114,5 +124,6 @@ public class Obj extends BObj implements Serializable
     {
        return nombre;
     }
+    
     
 }

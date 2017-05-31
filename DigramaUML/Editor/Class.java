@@ -17,8 +17,6 @@ public class Class extends BClass implements Serializable
    
     public int x,y;
     private int num;
-    
-    
     public Class()
     {
        metodo = new ArrayList<String>();
@@ -71,13 +69,22 @@ public class Class extends BClass implements Serializable
                 MClase mc =(MClase)getWorld();
                 ArrayList<Class> lista;
                 lista=mc.regresaarr();
-                lista.remove(this.num);  
+                lista.remove(this.num);
+                if(this.num < lista.size())
+                {
+                    for(int i=0; i<lista.size();i++)
+                    {
+                        Class auxc;
+                        auxc=lista.get(i);
+                        auxc.asignaN(i);
+                    }
+                }
+                mc.modificaNum();
                 mundo.removeObject(this);
             }
        }
     }   
-    
-     
+   
     
     @Override
      public void agregaAtributo()

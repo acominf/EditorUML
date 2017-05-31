@@ -49,9 +49,6 @@ public class MObjeto extends Seleccion
        
         showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
     }
-      
-    
-    
     
     @Override
     public void act()
@@ -158,21 +155,25 @@ public class MObjeto extends Seleccion
                for(int i = 0 ; i<aux.size();i++)
                {
                    Obj aux2 = aux.get(i);
+                   objetos.add(aux2);
                    addObject(aux2,aux2.dameX(),aux2.dameY());
                    showText(aux2.dameN(),aux2.getX(),aux2.getY()-25);
                }
       
                for(int i = 0 ; i<auxp.size();i++)
                {
-                   DepeObj aux2 = auxp.get(i);
-                   addObject(aux2,aux2.dameX(),aux2.dameY());
+                   DepeObj aux3 = auxp.get(i);
+                   dependencias.add(aux3);
+                   addObject(aux3,aux3.dameX(),aux3.dameY());
                }
                
                for(int i = 0 ; i<auxl.size();i++)
                {
-                   Linea aux2 = auxl.get(i);
-                   System.out.println(aux2.dameX1()+ "," +aux2.dameY1());
-                   g.drawLine(aux2.dameX1(),aux2.dameY1(),aux2.dameX2(),aux2.dameY2());
+                   Linea aux4 = auxl.get(i);
+                   lineas.add(aux4);
+                   System.out.println(aux4.dameX1()+ "," +aux4.dameY1());
+                   g.drawLine(aux4.dameX1(),aux4.dameY1(),aux4.dameX2(),aux4.dameY2());
+                   muestraLinea();
                }
                objetoEntrada.close();
             }
@@ -219,5 +220,10 @@ public class MObjeto extends Seleccion
         objetos.clear();
         lineas.clear();
         dependencias.clear();
+    }
+    
+    public void modificaNum()
+    {
+        num--;
     }
 }
