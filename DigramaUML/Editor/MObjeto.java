@@ -19,10 +19,14 @@ public class MObjeto extends Seleccion
     private  int p;
     private GuardarO guard;
     private AbrirO abr;
-    public boolean depe;
-    public boolean limpia;
+    private NuevoObj n;
+    //
+    private boolean depe;
     private DepeObj depeB;
-    public boolean br;
+    //
+    private boolean br;
+    //
+    private boolean limpia;
     private static int num=0;
     public MObjeto()
     {
@@ -32,23 +36,25 @@ public class MObjeto extends Seleccion
         objetos = new ArrayList<Obj>();
         lineas =new ArrayList<Linea>();
         dependencias = new ArrayList<DepeObj>();
-        
+        limpia=false;
         NuevoObjeto bt = new NuevoObjeto();
         BtAtrasO ba = new BtAtrasO();
         guard = new GuardarO();
         abr = new AbrirO();
         
         depeB=new DepeObj();
-        
+        n= new NuevoObj();
         
         addObject(ba, super.getWidth()/2, super.getHeight()/8*7);
         addObject(bt,100,100);
         addObject(guard,300,100);
         addObject(abr,500,100);
        addObject(depeB,750,100);
-       
+       addObject(n,750,150);
+       showText("Nuevo",750,150);
         showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
     }
+    
     
     @Override
     public void act()
@@ -66,8 +72,8 @@ public class MObjeto extends Seleccion
                }
                Obj objeto;
                objeto = new Obj();
-               objeto.x=raton.getX();
-               objeto.y=raton.getY();
+               objeto.modificaX(raton.getX());
+               objeto.modificaY(raton.getY());
                objetos.add(objeto);
                this.addObject(objeto,raton.getX(),raton.getY());
                objeto.asignaN(num);
@@ -97,8 +103,8 @@ public class MObjeto extends Seleccion
                             lineas.add(linea);
                             
                             DepeObj d = new DepeObj();
-                            d.x=raton.getX();
-                            d.y=raton.getY();
+                            d.modificaX(raton.getX());
+                            d.modificaY(raton.getY());
                             dependencias.add(d);
                             addObject(d,a,b);
                             depe=false;
@@ -225,5 +231,19 @@ public class MObjeto extends Seleccion
     public void modificaNum()
     {
         num--;
+    }
+    public void modificaDepe()
+    {
+        depe=true;
+    }
+    
+    public void modificaBr()
+    {
+        br=true;
+    }
+    
+    public void modificaLimpia()
+    {
+        limpia=true;
     }
 }

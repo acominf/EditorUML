@@ -17,7 +17,8 @@ public class BtAtrasO extends Actor
         World mundo = this.getWorld(); 
         if(Greenfoot.mouseClicked(this))
         {
-           ((MObjeto)getWorld()).limpia = true;
+            MObjeto mc =(MObjeto)getWorld();
+            mc.modificaLimpia();
             Greenfoot.setWorld(new Principal());
            //((MClase)getWorld()).limpia = true;
         }

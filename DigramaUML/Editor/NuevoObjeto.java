@@ -18,8 +18,10 @@ public class NuevoObjeto extends BObj
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if(Greenfoot.mouseClicked(this))
         {
-          // mc.cambiaBa(true);
-           ((MObjeto)getWorld()).br = true;
+            
+            MObjeto mc =(MObjeto)getWorld();
+             mc.modificaBr();
+           //((MObjeto)getWorld()).br = true;
         }           
     }  
     

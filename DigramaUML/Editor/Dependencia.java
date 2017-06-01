@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class Dependencia extends Actor implements Serializable
 {
-    public int x,y;
+    private int x,y;
     GreenfootImage g;
     public void act() 
     {
@@ -17,10 +17,12 @@ public class Dependencia extends Actor implements Serializable
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if(Greenfoot.mouseClicked(this))
         {
+            MClase mc =(MClase)getWorld();
             g=mundo.getBackground();
             Color c= new Color(255,255,255);
             g.setColor(c);
-            ((MClase)getWorld()).depe = true;
+            mc.modificaBa();
+            //((MClase)getWorld()).depe = true;
               if(mouse.getButton()==3 )
             {
                 mundo.removeObject(this);
@@ -37,5 +39,14 @@ public class Dependencia extends Actor implements Serializable
     public int dameY()
     {
        return y;
+    }
+    public void modificaX(int x)
+    {
+        this.x=x;
+    }
+    
+    public void modificaY(int Y)
+    {
+        this.y=y;
     }
 }

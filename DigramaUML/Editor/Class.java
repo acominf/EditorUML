@@ -15,7 +15,7 @@ public class Class extends BClass implements Serializable
     private ArrayList <String> atributo;
     private ArrayList <String> metodo;
    
-    public int x,y;
+    private int x,y;
     private int num;
     public Class()
     {
@@ -152,5 +152,13 @@ public class Class extends BClass implements Serializable
     {
        return nombre;
     }
+    public void modificaX(int x)
+    {
+        this.x=x;
+    }
     
+    public void modificaY(int Y)
+    {
+        this.y=y;
+    }
 }

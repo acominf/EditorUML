@@ -14,7 +14,7 @@ public class Obj extends BObj implements Serializable
     private String nombre;
     private ArrayList <String> atributobj;
     private ArrayList <String> metodobj;
-    public int x,y;
+    private int x,y;
     private int num;
     public Obj()
     {
@@ -124,6 +124,14 @@ public class Obj extends BObj implements Serializable
     {
        return nombre;
     }
+    public void modificaX(int x)
+    {
+        this.x=x;
+    }
     
+    public void modificaY(int Y)
+    {
+        this.y=y;
+    }
     
 }

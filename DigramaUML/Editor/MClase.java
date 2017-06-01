@@ -18,13 +18,18 @@ public class MClase extends Seleccion implements Serializable
     private NuevaClase bt;
     private BtAtras bas;
     private Guardar guard;
-    public boolean here;
-    public boolean depe;
+    private NuevoCl n;
+    //
+    private boolean here;
+    //
+    private boolean depe;
     private Abrir abr;
     private Herencia hereB;
     private Dependencia depeB;
-    public boolean ba;
-    public boolean limpia;
+    //
+    private boolean ba;
+    //
+    private boolean limpia;
     
     
     private static int num=0;
@@ -42,17 +47,18 @@ public class MClase extends Seleccion implements Serializable
         lineas= new ArrayList<Linea>();
         herencias= new ArrayList<Herencia>();
         dependencias = new ArrayList<Dependencia>();
-        
+        n= new NuevoCl();
         addObject(bas, super.getWidth()/2, super.getHeight()/8*7);
         addObject(bt,100,100);
         addObject(guard,300,100);
         addObject(abr,500,100);
         addObject(hereB,700,100);
         addObject(depeB,750,100);
-        
-        
+        addObject(n,750,150);
+        showText("Nuevo",750,150);
         showText("Borrar con boton derecho",super.getWidth()/4*3, super.getHeight()/8*7);
     }
+    
     
     
     @Override
@@ -75,8 +81,8 @@ public class MClase extends Seleccion implements Serializable
                    num=0;
                }
                Class clase = new Class(); 
-               clase.x=mouse.getX();
-               clase.y=mouse.getY();
+               clase.modificaX(mouse.getX());
+               clase.modificaY(mouse.getY());
                this.addObject(clase,mouse.getX(),mouse.getY());
                clases.add(clase);
                System.out.println("Coordenada x: "+clase.dameX());
@@ -110,8 +116,8 @@ public class MClase extends Seleccion implements Serializable
                             lineas.add(linea);
                             
                             Herencia h = new Herencia();
-                            h.x=mouse.getX();
-                            h.y=mouse.getY();
+                            h.modificaX(mouse.getX());
+                            h.modificaY(mouse.getY());
                             herencias.add(h);
                             addObject(h,a,b);
                             here=false;
@@ -141,8 +147,8 @@ public class MClase extends Seleccion implements Serializable
                             lineas.add(linea);
                             
                             Dependencia d = new Dependencia();
-                            d.x=mouse.getX();
-                            d.y=mouse.getY();
+                            d.modificaX(mouse.getX());
+                            d.modificaY(mouse.getY());
                             dependencias.add(d);
                             addObject(d,a,b);
                             depe=false;
@@ -279,14 +285,23 @@ public class MClase extends Seleccion implements Serializable
         num--;
     }
     
-    /*
-    public void aumentaN()
+    public void modificaHere()
     {
-        numC++;
+        here=true;
     }
     
-    public int accedeN()
+    public void modificaBa()
     {
-        return numC;
-    }*/
+        ba=true;
+    }
+    
+    public void modificaDepe()
+    {
+        depe=true;
+    }
+    
+    public void modificaLimpia()
+    {
+        limpia=true;
+    }
 }

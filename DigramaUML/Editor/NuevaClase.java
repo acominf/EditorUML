@@ -18,8 +18,9 @@ public class NuevaClase extends BClass
         MouseInfo mouse = Greenfoot.getMouseInfo();
         if(Greenfoot.mouseClicked(this))
         {
-          // mc.cambiaBa(true);
-           ((MClase)getWorld()).ba = true;
+            MClase mc =(MClase)getWorld();
+            mc.modificaBa(); 
+          // ((MClase)getWorld()).ba = true;
            // mc.aumentaN();
         }
     }  
