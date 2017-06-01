@@ -21,7 +21,7 @@ public class Dependencia extends Actor implements Serializable
             g=mundo.getBackground();
             Color c= new Color(255,255,255);
             g.setColor(c);
-            mc.modificaBa();
+            mc.modificaDepe();
             //((MClase)getWorld()).depe = true;
               if(mouse.getButton()==3 )
             {
