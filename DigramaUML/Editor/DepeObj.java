@@ -42,7 +42,7 @@ public class DepeObj extends Actor implements Serializable
         this.x=x;
     }
     
-    public void modificaY(int Y)
+    public void modificaY(int y)
     {
         this.y=y;
     }
