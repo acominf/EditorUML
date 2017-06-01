@@ -27,7 +27,7 @@ Se puede guardar el diagrama, como un archivo modificable, para continuar con el
 
 
 ### Diagrama de clases
-![Diagrama de clases](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/UML.jpg)
+![Diagrama de clases](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/UML2.jpg)
 
 ### Actores de la aplicación
 ![Imagen de clase](https://raw.githubusercontent.com/acominf/EditorUML/master/DigramaUML/Editor/images/dibujoclass.jpg)
@@ -54,8 +54,3 @@ El autor(es) del proyecto son:
 ### Video de muestra del proyecto
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9QeMDz1amiU" frameborder="0" allowfullscreen></iframe>
 
-### Markdown
-El contenido de esta página está escrito en un lenguaje de marcado sencillo llamado *Markdown*. Para más detalles consulta la página de [Markdown para GitHub](https://guides.github.com/features/mastering-markdown/).
-
-### Temas de Jekyll
-El estilo y presentación de esta página utiliza el tema de Jekyll seleccionado en la configuración del repositorio. El nombre de este tema está almacenado en el archivo de configuración `_config.yml`. Para más información acerca de los temas de Jekyll soportados por GitHub [haz click en este enlace](https://pages.github.com/themes/).
